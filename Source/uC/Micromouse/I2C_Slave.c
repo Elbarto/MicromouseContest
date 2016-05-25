@@ -27,6 +27,7 @@ uint8_t (*callBack)(uint8_t*,uint8_t,uint8_t*);//Data receive buffer, size recei
 
 //variable to indicate if something went horribly wrong
 uint8_t reset = 0;
+
 uint8_t transmit_size = 0;
 uint8_t max_size_buff = 0;
 
