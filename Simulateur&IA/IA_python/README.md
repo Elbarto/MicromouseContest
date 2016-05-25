@@ -8,4 +8,4 @@
 3. **Fonctionnement**
 4. **Tâches à faire**
   - [x] Generation du labyrinthe "filename.py" 
-  - [ ] Algoritme de résolution "filename.py"
+  - [x] Algoritme de résolution "filename.py"
