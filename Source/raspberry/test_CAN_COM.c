@@ -1,6 +1,6 @@
 #include <wiringPi.h>
 #include <stdio.h>
-#include "SPI.h"
+#include "I2C.h"
 
 #ifdef DEBUG
 #undef DEBUG
@@ -46,3 +46,4 @@ int main (void)
 
 	return 0 ;
 }
+

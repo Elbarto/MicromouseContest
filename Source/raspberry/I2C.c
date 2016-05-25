@@ -1,5 +1,6 @@
 #include <errno.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <wiringPiI2C.h>
 #include "I2C.h"
 
@@ -22,31 +23,28 @@ int I2C_Init(int AddrId)
    return fd; //Linux file handler, used by other function.
 }
 
-int I2C_SendByte(int fd, unsigned int data)
+int I2C_Write(int fd, uint8_t* buffer, int len)  
 {
-   int ret = -1;
-   if(ret = wiringPiI2CWrite(fd, data) == -1)
+   int ret = write(fd,buffer,len);
+   if(ret != len) 
    {
-      if(DEBUG) fprintf(stderr,"I2C SendByte Error.  Errno is: ",strerror(errno));
+      printf("Error, I2C transmission failed\n");
       return 0;
    }
 
-   if(DEBUG) printf("I2C byte send %d with succes.\n",data);
    return 1;
-
 }
 
-int I2C_ReadByte(int fd)
+int I2C_Read(int fd, uint8_t* buffer, int len)
 {
-   int data = wiringPiI2CRead(fd);
-   if(data == -1)
+   int ret = read(fd, buffer, len);
+   if(ret != len)
    {
-      if(DEBUG) fprintf(stderr,"I2C ReadByte Error.  Errno is: ",strerror(errno));
+      printf("Error, I2C reception failed\n");
       return 0;
    }
 
-   if(DEBUG) printf("I2C read byte %d.\n",data);
-   return data;
+   return 1;
 }
 
 
